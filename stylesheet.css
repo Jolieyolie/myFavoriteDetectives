@@ -1,0 +1,8 @@
+.circle-image {
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgb(235, 131, 21);
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
