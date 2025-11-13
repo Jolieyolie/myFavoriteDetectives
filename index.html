@@ -3,17 +3,93 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylesheet.css" />
     <title>My Favorite Detectives</title>
   </head>
   <body>
-    <h1>My Favorite Detectives</h1>
-    <ul>
-      <li><a href="Sherlock.html">Sherlock Holmes</a></li>
-      <li><a href="Conan.html">Hercule Poirot</a></li>
-      <li><a href="Kotoko_Iwanaga.html">Nancy Drew</a></li>
-      <li><a href="Miss_Marple.html">Nancy Drew</a></li>
-      <li><a href="Maomao.html">Nancy Drew</a></li>
-      <li><a href="Detective Morse.html">Nancy Drew</a></li>
+    <div class="title-background">YOUR FAVORITE DETECTIVES</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search detective..." />
+      <button id="searchBtn">Go</button>
+    </div>
+    <ul class="photo-list">
+      <li>
+        <a
+          href="Sherlock.html"
+          class="floating-photo"
+          data-title="Sherlock Holmes"
+          target="_blank"
+          rel="noopener"
+          ><img src="detectives_image/Sherlock.png" alt="Sherlock" />
+          <div class="photo-title">Sherlock Holmes</div></a
+        >
+      </li>
+      <li>
+        <a
+          href="Conan.html"
+          class="floating-photo"
+          data-title="Conan Edogawa"
+          target="_blank"
+          rel="noopener"
+          ><img src="detectives_image/Conan.jpg" alt="Conan Edogawa" />
+          <div class="photo-title">Conan Edogawa</div></a
+        >
+      </li>
+      <li>
+        <a
+          href="Kotoko_Iwanaga.html"
+          class="floating-photo"
+          data-title="Kotoko Iwanaga"
+          target="_blank"
+          rel="noopener"
+        >
+          <img src="detectives_image/Kotoko.jpg" alt="Kotoko Iwanaga" />
+          <div class="photo-title">Kotoko Iwanaga</div></a
+        >
+      </li>
+      <li>
+        <a
+          href="Miss_Marple.html"
+          class="floating-photo"
+          data-title="Jane Marple"
+          target="_blank"
+          rel="noopener"
+          ><img src="detectives_image/Marple.jpg" alt="Jane Marple" />
+          <div class="photo-title">Jane Marple</div></a
+        >
+      </li>
+      <li>
+        <a
+          href="Maomao.html"
+          class="floating-photo"
+          data-title="Maomao"
+          target="_blank"
+          rel="noopener"
+          ><img src="detectives_image/Maomao.jpg" alt="Maomao" />
+          <div class="photo-title">Maomao</div></a
+        >
+      </li>
+      <li>
+        <a
+          href="Detective Morse.html"
+          class="floating-photo"
+          data-title="Endeavour Morse"
+          target="_blank"
+          rel="noopener"
+          ><img src="detectives_image/Morse.jpg" alt="Endeavour Morse" />
+          <div class="photo-title">Endeavour Morse</div></a
+        >
+      </li>
     </ul>
+    <script src="script.js"></script>
   </body>
 </html>
+<footer class="footer">
+  <p>©2025 MiMi Mercury inc. All rights reserved.</p>
+</footer>

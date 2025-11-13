@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 20px;
+  overflow: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: #111;
+  font-family: sans-serif;
+  color: white;
+}
+img {
+  display: block;
+  margin-right: 20px;
+}
+
+.circle-image {
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgb(235, 131, 21);
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Full width bar */
+  text-align: center; /* Center text */
+  padding: 10px 10px;
+  color: rgb(100, 99, 99);
+}

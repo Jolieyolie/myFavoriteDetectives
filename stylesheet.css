@@ -1,8 +1,202 @@
-.circle-image {
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  height: 100vh;
+  background-color: #111;
+  font-family: sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.title-background {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: bold;
+  color: #0ff; /* very light, subtle */
+  letter-spacing: 0.5rem;
+  z-index: 0; /* behind content */
+  text-transform: uppercase;
+  font-family: "Cinzel", serif; /* or a mysterious font from Google Fonts */
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff,
+    0 0 80px #0ff;
+}
+.search-bar {
+  position: fixed;
+  top: 15px;
+  left: 85%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: transparent;
+  padding: 8px 8px;
+  display: flex;
+  align-items: right;
+  gap: 8px;
+}
+
+.search-bar input {
+  border-color: #0ff;
+  outline: none;
+  caret-color: #0ff;
+  font-size: 1.25rem;
+  padding-left: 10px;
+  color: white;
+  width: 200px;
+  border-radius: 15px;
+  border: #0ff 2px solid;
+  background: transparent;
+  box-shadow: 0 2px 10px #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+.search-bar input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+.search-bar button {
+  background: #0ff;
+  border: none;
+  color: black;
+  text-shadow: 0 0 20px rgb(15, 15, 15);
+  font-size: 1.25rem;
+  font-family: "Roboto", sans-serif;
+  padding: 10px 12px;
+  border-radius: 20px;
+  cursor: url("magnifying.svg"), pointer;
+  font-weight: 400;
+  box-shadow: 0 2px 10px #0ff;
+}
+
+.highlighted {
+  width: 200px;
+  height: 200px;
+  z-index: 100;
+  transform: scale(1.2);
+}
+
+.floating-photo {
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
+  will-change: transform, left, top;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-photo:hover {
+  transform: scale(1.1);
+  z-index: 999;
+}
+
+.floating-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.photo-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 6px 4px;
+  opacity: 0;
+  /* transform: translateY(100%); */
+  transition: opacity 0.25s ease;
+}
+
+.floating-photo:hover .photo-title {
+  opacity: 1;
+  /* transform: translateY(0%); */
+}
+
+ul.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 40px;
+}
+
+ul.photo-list li a {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+ul.photo-list li a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+ul.photo-list img {
   width: 150px;
   height: 150px;
   border: 2px solid rgb(235, 131, 21);
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
+}
+img {
+  display: inline-block;
+  margin: 5px;
+  vertical-align: middle;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+ul.photo-list li a {
+  animation: float 4s ease-in-out infinite;
+}
+
+.footer {
+  position: fixed; /* Stays fixed at the bottom */
+  bottom: 0; /* Align to bottom */
+  left: 50%; /* Start at horizontal center */
+  transform: translateX(-50%); /* Center horizontally */
+  text-align: center; /* Center text inside footer */
+  width: auto; /* Or 100% if you want full width */
+  padding: 10px 10px;
+  color: rgb(100, 99, 99);
 }
