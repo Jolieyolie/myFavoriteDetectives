@@ -80,6 +80,8 @@ body {
   box-shadow: 0 2px 10px #0ff;
 }
 
+
+
 .floating-photo {
   position: fixed;
   display: block;
@@ -109,10 +111,10 @@ body {
 }
 
 .highlighted {
-  width: 220px !important;
-  height: 220px !important;
-  z-index: 5000 !important;
-  transform: none !important;
+  width: 220px; !important;
+  height: 220px; !important;
+  z-index: 5000; !important;
+  transform: none; !important;
 }
 
 .photo-title {
