@@ -80,20 +80,23 @@ body {
   box-shadow: 0 2px 10px #0ff;
 }
 
+#modules-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* or full document height */
+}
 .floating-photo {
-  position: fixed;
-  display: block;
+  position: fixed; /* floats relative to viewport */
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  overflow: visible;
   cursor: pointer;
   z-index: 5;
-  will-change: transform, left, top;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s;
+  border: 2px solid rgb(235, 131, 21);
+  padding: 0;
+  margin: 0;
 }
 
 .floating-photo:hover {
@@ -104,8 +107,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   display: block;
+  overflow: hidden;
   pointer-events: none;
+  object-position: center;
 }
 
 .highlighted {
@@ -116,18 +122,21 @@ body {
 }
 
 .photo-title {
+  /* top: calc(100% + 8px); */
+  display: block;
+  line-height: 1.1;
   position: absolute;
   bottom: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.55);
   color: white;
   text-align: center;
+  font-size: clamp(0.55rem, 2vw, 0.8rem);
   /* font-size: 0.75rem; */
   padding: 6px 4px;
-  /* opacity: 0; */
-  /* transition: opacity 0.25s ease; */
-  /* white-space: normal; 
-  word-break: break-word; */
+
+  white-space: normal;
+  word-break: break-word;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
   mask-image: linear-gradient(
     to right,
@@ -151,12 +160,15 @@ body {
 }
 
 ul.photo-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  list-style: none;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* gap: 20px; */
   list-style: none;
   padding: 0;
-  margin: 40px;
+  /* margin: 40px; */
+  margin: 0;
+  position: relative;
 }
 
 ul.photo-list li a {
@@ -187,11 +199,11 @@ ul.photo-list img {
   object-fit: cover;
   overflow: hidden;
 }
-img {
+/* img {
   display: inline-block;
   margin: 5px;
   vertical-align: middle;
-}
+} */
 @keyframes float {
   0%,
   100% {

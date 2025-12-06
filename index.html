@@ -18,8 +18,11 @@
       <input type="text" id="searchInput" placeholder="Search detective..." />
       <button id="searchBtn">Go</button>
     </div>
-    <ul class="photo-list">
-      <li>
+    <div class="photo-list" id="modules-container"></div>
+    <ul class="photo-list"></ul>
+    <div id="profile-container"></div>
+    <!-- <ul class="photo-list" id="modules-container"> -->
+    <!-- <li>
         <a
           href="Sherlock.html"
           class="floating-photo"
@@ -114,14 +117,64 @@
           />
           <div class="photo-title">Jessica Fletcher</div></a
         >
-      </li>
-    </ul>
+      </li> -->
+    <!-- </ul> -->
+    -->
     <div class="rating-box" data-id="detective-1">
       <div class="stars">★★★★★</div>
       <div class="rating-info">
         <span class="avg">0.0</span> / 5 (<span class="count">0</span> votes)
       </div>
     </div>
+
+    <script>
+      async function loadDetectives() {
+        const query = `
+          {
+            detectives {
+              name
+              age
+              nationality
+              introduction
+              appearingInMedia
+              profilePhoto {
+                url
+              }
+            }
+          }
+        `;
+
+        const res = await fetch(
+          "https://eu-west-2.cdn.hygraph.com/content/cmic8lwzx01e407w429wkjxja/master",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query }),
+          }
+        );
+
+        const json = await res.json();
+
+        const detectives = json.data.detectives;
+        const container = document.getElementById("modules-container");
+
+        // Render content onto the page
+        container.innerHTML = detectives
+          .map(
+            (d) => `
+            <li>
+              <a href="#" class="floating-photo" data-title="${d.name}" target="_blank" rel="noopener">
+                <img src="${d.profilePhoto?.url}" alt="${d.name}" />
+                <div class="photo-title">${d.name}</div>
+              </a>
+            </li>
+      `
+          )
+          .join("");
+      }
+
+      loadDetectives();
+    </script>
     <script src="script.js" type="module"></script>
   </body>
 </html>
