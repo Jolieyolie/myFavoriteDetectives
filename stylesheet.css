@@ -34,6 +34,7 @@ body {
   text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff,
     0 0 80px #0ff;
 }
+/* --search bar-- */
 .search-bar {
   position: fixed;
   top: 15px;
@@ -79,6 +80,15 @@ body {
   font-weight: 400;
   box-shadow: 0 2px 10px #0ff;
 }
+.floating-photo.highlighted {
+  z-index: 9999;
+  transform: scale(1.4) !important; /* larger */
+  transition: transform 0.3s ease;
+}
+
+.floating-photo.frozen {
+  animation-play-state: paused !important; /* stop floating */
+}
 
 #modules-container {
   position: relative;
@@ -121,8 +131,7 @@ body {
   transform: none !important;
 }
 
-.photo-title {
-  /* top: calc(100% + 8px); */
+/* .photo-title {
   display: block;
   line-height: 1.1;
   position: absolute;
@@ -132,7 +141,7 @@ body {
   color: white;
   text-align: center;
   font-size: clamp(0.55rem, 2vw, 0.8rem);
-  /* font-size: 0.75rem; */
+
   padding: 6px 4px;
 
   white-space: normal;
@@ -152,26 +161,25 @@ body {
     black 80%,
     transparent
   );
-}
+} */
 
 .floating-photo:hover .photo-title {
   opacity: 1;
   /* transform: translateY(0%); */
 }
 
-ul.photo-list {
+/* ul.photo-list {
   list-style: none;
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* gap: 20px; */
-  list-style: none;
-  padding: 0;
-  /* margin: 40px; */
+  display: flex;
+  flex-wrap: wrap; 
+   gap: 20px; 
+   list-style: none;
+  padding: 0; 
+  margin: 40px;
   margin: 0;
-  position: relative;
-}
-
-ul.photo-list li a {
+  position: relative; 
+} 
+ ul.photo-list li a {
   display: flex;
   width: 150px;
   height: 150px;
@@ -180,7 +188,6 @@ ul.photo-list li a {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 ul.photo-list li a:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
@@ -190,7 +197,6 @@ ul.photo-list li a:hover {
   object-fit: cover;
   overflow: hidden;
 }
-
 ul.photo-list img {
   width: 150px;
   height: 150px;
@@ -199,10 +205,13 @@ ul.photo-list img {
   object-fit: cover;
   overflow: hidden;
 }
-/* img {
+img {
   display: inline-block;
   margin: 5px;
   vertical-align: middle;
+}
+   ul.photo-list li a {
+  animation: float 4s ease-in-out infinite;
 } */
 @keyframes float {
   0%,
@@ -214,10 +223,97 @@ ul.photo-list img {
   }
 }
 
-ul.photo-list li a {
-  animation: float 4s ease-in-out infinite;
+/* BACKDROP */
+.modal {
+  display: none;
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
 }
 
+/* MODAL BOX – PERFECT CENTERING */
+.modal-content {
+  position: fixed; /* instead of relative */
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%); /* TRUE CENTER */
+
+  background: #fff;
+  color: #000;
+
+  width: 90%;
+  max-width: 750px;
+  max-height: 85vh;
+
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
+}
+/* CLOSE BUTTON — always stays visible */
+.close {
+  position: sticky;
+  top: 0;
+  float: right;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 10000;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* IMAGE */
+#modalPhoto {
+  width: 100%;
+  max-height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* FIX LABEL + CONTENT SEPARATION */
+.modal-content p {
+  margin: 10px 0;
+  line-height: 1.45;
+  display: block;
+  width: 100%;
+}
+#modalIntro {
+  margin-top: 5px;
+  display: block;
+  white-space: normal;
+  line-height: 1.6;
+}
+.modal-content strong {
+  display: inline-block;
+  min-width: 140px; /* keeps labels together */
+}
+.modal-field {
+  margin-bottom: 15px;
+}
+
+/* LABEL + VALUE on same line UNTIL value wraps */
+.modal-label {
+  font-weight: bold;
+  display: inline;
+}
+
+.modal-value {
+  display: inline;
+}
 .footer {
   position: fixed; /* Stays fixed at the bottom */
   bottom: 0; /* Align to bottom */
